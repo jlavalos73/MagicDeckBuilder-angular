@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <h1 class="text-center">Welcome to the Magic: The Gathering Deckbuilder!</h1>
+
+</div>
+<form>
+<div *ngIf="!isLoggedIn" class="container">
+    <div class="d-flex justiy-content-center h-100"></div>
+        <div class="card">
+                <div class="card-header">
+                   <h2>Log in</h2>
+                </div>
+                <div>
+                    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">      
+                        <div>
+                            <label for="email">email </label>
+                          <input type="text" name="email" id="email" value="email" placeholder="email@website.com" formControlName="email" />
+    
+                        </div>
+                        <div>
+                            <label for="password">Password </label>
+                            <input type="password" name="password" id="password" placeholder="password" formControlName="password"/>
+                        </div>
+                        <div>
+                          <button type="submit">Login</button>
+                        </div>
+                      </form>
+                </div>
+            </div>
+
+</div>
+
+<div *ngIf="isLoggedIn">
+    <button (click)="logout()">Logout</button>
+</div>
