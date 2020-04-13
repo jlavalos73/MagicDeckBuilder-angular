@@ -23,7 +23,7 @@ const routes: Routes = [
 
   //MDB module route
   {
-    path: '/mdb/app',
+    path: 'mdb/app',
     loadChildren: './mdb/mdb.module#MDBModule',
     canActivate: [MDBGuard],
     canLoad: [MDBGuard]
