@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 
-import { LoginComponent } from './login/login.component' 
+import { LoginComponent } from './login/login.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
