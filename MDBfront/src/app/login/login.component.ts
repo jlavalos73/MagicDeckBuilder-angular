@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { Observable } from 'rxjs';
 import { RouterModule, Routes } from '@angular/router';
