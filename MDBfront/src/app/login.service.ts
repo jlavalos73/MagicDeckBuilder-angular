@@ -35,15 +35,21 @@ export class LoginService {
        const login = new Login();
        login.email = email;
        login.password = password;
-        this.http.get<User>(`http://54.211.173.35:8085/MDBback/auth/${email}`)
+       this.http.post<boolean>(`http://54.211.173.35:8085/MDB/auth/${email}`,  login)
+       .pipe(map( data => {
+        if (data) {
+          this.http.get<User>(`http://54.211.171.35:8085/MDB/auth/${email}`)
           .pipe(map((data: any) => {
             localStorage.setItem('currentUser', JSON.stringify(data));
             this.currentUserSubject.next(data);
         })).subscribe();
+      }
+    }
+    )).subscribe();
      }
-     
+
      register(user: User) {
-       this.http.post('http://54.211.173.35:8085/MDBback/User', user)
+       this.http.post("http://54.211.173.35:8085/MDB/User", user)
      }
 
      logout() {
