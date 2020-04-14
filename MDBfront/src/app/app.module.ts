@@ -6,15 +6,23 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { CardSearchComponent } from './card-search/card-search.component';
 
+import { LoginComponent } from './login/login.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
+    LoginComponent,
     CardSearchComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
