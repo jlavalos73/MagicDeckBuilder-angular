@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MDBGuard } from './guards/mdb.guard';
+import { CardSearchComponent } from './mdb/card-search/card-search.component';
 import { RegisterComponent } from './register/register.component';
 
 
@@ -35,6 +36,12 @@ const routes: Routes = [
     loadChildren: './mdb/mdb.module#MDBModule',
     canActivate: [MDBGuard],
     canLoad: [MDBGuard]
+  },
+
+  //Search route
+  {
+    path: 'mdb/search',
+    component: CardSearchComponent,
   }
 
 ];

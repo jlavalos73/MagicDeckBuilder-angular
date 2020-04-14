@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from '@rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Card } from './models/card';
@@ -23,7 +23,7 @@ export class CardSearchService {
   }
 
   getCards(): Observable<Card []> {
-    return this.http.get<Card>("https://api.scryfall.com/catalog/card-names")
+    return this.http.get<Card []>("https://api.scryfall.com/catalog/card-names")
       .pipe(
         catchError(this.handleError<Card []>('getCards', []))
       );
@@ -38,7 +38,7 @@ export class CardSearchService {
   // }
 
   searchByName(name: string): Observable<Card []> {
-    return this.http.get<Card []>(`https://api.scryfall.com/cards/search?order=name&q=${name}`)
+    return this.http.get<Card []>(`https://api.scryfall.com/cards/search?=name&q=${name}`)
       .pipe(
         catchError(this.handleError<Card []>('getCardByName', []))
       );
@@ -53,13 +53,13 @@ export class CardSearchService {
 
   addCard(c:Card): Observable<User []> {
     console.log(c);
-    return this.http.post<User []>('http://localhost:8085/MDBback/card', c)
+    return this.http.post<User []>('http://localhost:8085/MDB/card', c)
       .pipe(
         catchError(this.handleError<any>('addCard'))
       );
   }
 
   deleteCard(c: Card): Observable<Card> {
-    return this.http.delete<Card> 
+    return this.http.delete<Card>('http://localhost:8085/MDB/card'); 
   }
 }
