@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MDBGuard } from './guards/mdb.guard';
 import { CardSearchComponent } from './mdb/card-search/card-search.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,13 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuard]
+  },
+
+  //register route
+  {
+    path: 'register',
+    component: RegisterComponent,
     canActivate: [AuthGuard]
   },
 
