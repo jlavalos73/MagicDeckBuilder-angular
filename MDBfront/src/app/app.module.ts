@@ -19,8 +19,7 @@ import { MatTableModule } from '@angular/material/table';
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    deck_viewer
-    DeckViewComponent
+    DeckViewComponent,
     CardSearchComponent
   ],
   imports: [
