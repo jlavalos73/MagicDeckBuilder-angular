@@ -10,11 +10,17 @@ import { LoginComponent } from './login/login.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
 
+import { DeckViewComponent } from './deck-view/deck-view.component'; 
+import { MatTableModule } from '@angular/material/table';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    deck_viewer
+    DeckViewComponent
     CardSearchComponent
   ],
   imports: [
@@ -22,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
