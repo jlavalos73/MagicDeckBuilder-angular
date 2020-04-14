@@ -38,5 +38,6 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.loginserv.logout();
+    this.loginserv.isLoggedIn().subscribe(value =>  this.isLoggedIn);
   }
 }
