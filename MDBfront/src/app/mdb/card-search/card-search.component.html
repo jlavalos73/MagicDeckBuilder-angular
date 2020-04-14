@@ -1,0 +1,29 @@
+<h1>Search for MtG Cards</h1>
+
+<form>
+    <input placeholder="Search" aria-label="Search">
+    <button type="submit">Search</button>
+</form>
+
+<div *ngIf="searchedCards">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Text</th>
+            <th>Mana</th>
+            <th>Power</th>
+            <th>Toughness</th>
+        </tr>
+        <tr>
+            <td>{{card.id}}</td>
+            <td>{{card.name}}</td>
+            <td>{{card.type}}</td>
+            <td>{{card.text}}</td>
+            <td>{{card.mana}}</td>
+            <td>{{card.power}}</td>
+            <td>{{card.toughness}}</td>
+        </tr>
+    </table>
+</div>
