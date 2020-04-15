@@ -5,6 +5,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { MDBGuard } from './guards/mdb.guard';
 import { CardSearchComponent } from './mdb/card-search/card-search.component';
 import { RegisterComponent } from './register/register.component';
+import { MdbModule } from './mdb/mdb.module';
 
 
 const routes: Routes = [
@@ -33,7 +34,7 @@ const routes: Routes = [
   //MDB module route
   {
     path: 'mdb/app',
-    loadChildren: './mdb/mdb.module#MDBModule',
+    loadChildren: ()=> MdbModule,
     canActivate: [MDBGuard],
     canLoad: [MDBGuard]
   },
