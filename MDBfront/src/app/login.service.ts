@@ -43,7 +43,11 @@ export class LoginService {
       }
 
      register(user: User) {
-       this.http.post("http://54.211.173.35:8085/MDB/user", user)
+       this.http.post<User>("http://54.211.173.35:8085/MDB/user", user)
+       .pipe(map((data: any) => {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        this.currentUserSubject.next(data);
+      })).subscribe();
      }
 
      logout() {
