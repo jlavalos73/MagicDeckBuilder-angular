@@ -24,7 +24,7 @@
         </tr>
         <tr  *ngFor="let card of searchResults">
             <th><img src="{{card.image_uris.small}}"></th>
-            <td><a href="/card/{{card.name}}">{{card.name}}</a></td>
+            <td><a routerLink="/card/{{card.id}}">{{card.name}}</a></td>
             <td>{{card.type_line}}</td>
             <td>{{card.oracle_text}}</td>
             <td>{{card.mana_cost}}</td>

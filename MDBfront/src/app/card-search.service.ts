@@ -25,9 +25,6 @@ export class CardSearchService {
   // This method returns a card by Scryfall id, but there are also mtg ids and our own ids. which is best?
   getCardById(id: number): Observable<any> {
     return this.http.get(`https://api.scryfall.com/cards/${id}`)
-      .pipe(
-        catchError(this.handleError<any>('getCardById'))
-      );
   }
 
   searchByName(searchTerms): Observable<any> {

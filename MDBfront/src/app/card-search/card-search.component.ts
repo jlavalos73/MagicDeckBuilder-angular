@@ -52,7 +52,7 @@ export class CardSearchComponent implements OnInit {
     this.searchService.searchByName(this.searchTerms)
       .subscribe((res:any) => {
         this.searched = true;
-        this.searchResults = res.data;
+        this.searchResults = res.data.slice(0, 9);
       })
   }
 

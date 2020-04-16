@@ -17,9 +17,9 @@ import { CardSearchService } from '../card-search.service';
 })
 export class CardDetailComponent implements OnInit {
 
-  cardSelected: number;
-  cardInfo: Object;
-  
+  cardFound: boolean = false;
+  card: Object;
+
   constructor(
     private route: ActivatedRoute,
     private searchService: CardSearchService,
@@ -28,9 +28,12 @@ export class CardDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.searchService.getCardById(cardSelected)
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.searchService.getCardById(id)
       .subscribe((res:any) => {
-        this.cardInfo = res;
+        console.log(res);
+        this.cardFound = true;
+        this.card = res;
       });
   }
 
