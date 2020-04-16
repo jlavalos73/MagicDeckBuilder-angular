@@ -6,6 +6,7 @@ import { MDBGuard } from './guards/mdb.guard';
 import { CardSearchComponent } from './card-search/card-search.component';
 import { RegisterComponent } from './register/register.component';
 import { CardDetailComponent } from './card-detail/card-detail.component';
+import { DeckViewComponent } from './deck-view/deck-view.component';
 // import { MdbModule } from './mdb/mdb.module';
 
 
@@ -56,6 +57,12 @@ const routes: Routes = [
   {
     path:'d/:id',
     component: CardDetailComponent
+  },
+
+  //View Deck route
+  {
+    path:'decks',
+    component: DeckViewComponent
   },
 
 

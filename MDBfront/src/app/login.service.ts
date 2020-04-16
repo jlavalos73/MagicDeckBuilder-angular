@@ -35,10 +35,8 @@ export class LoginService {
        let login = new Login();
        login.email = email;
        login.password = password;
-       console.log(login);
-       this.http.post<User>(`http://54.211.173.35:8085/MDB/auth`,  login)
-        // removed first pipe and second GET http query : not needed
-       .pipe(map((data: User) => {
+        this.http.post<User>(`http://54.211.173.35:8085/MDB/auth`, login)
+          .pipe(map((data: any) => {
             localStorage.setItem('currentUser', JSON.stringify(data));
             this.currentUserSubject.next(data);
             return data;

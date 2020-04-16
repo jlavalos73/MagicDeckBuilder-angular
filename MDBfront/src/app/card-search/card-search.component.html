@@ -23,7 +23,7 @@
             <th>Toughness</th>
         </tr>
         <tr  *ngFor="let card of searchResults">
-            <th><img src="{{card.image_uris.small}}"></th>
+            <th><img src="{{card.image_uris.art_crop}}" style="width: 100px"></th>
             <td><a routerLink="/card/{{card.id}}">{{card.name}}</a></td>
             <td>{{card.type_line}}</td>
             <td>{{card.oracle_text}}</td>
