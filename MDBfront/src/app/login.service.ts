@@ -38,7 +38,7 @@ export class LoginService {
        this.http.post<boolean>(`http://54.211.173.35:8085/MDB/auth/${email}`,  login)
        .pipe(map( data => {
         if (data) {
-          this.http.get<User>(`http://54.211.171.35:8085/MDB/auth/${email}`)
+          this.http.get<User>(`http://54.211.173.35:8085/MDB/auth/${email}`)
           .pipe(map((data: any) => {
             localStorage.setItem('currentUser', JSON.stringify(data));
             this.currentUserSubject.next(data);
@@ -49,7 +49,7 @@ export class LoginService {
      }
 
      register(user: User) {
-       this.http.post("http://54.211.173.35:8085/MDB/User", user)
+       this.http.post("http://54.211.173.35:8085/MDB/user", user)
      }
 
      logout() {

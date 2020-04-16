@@ -23,7 +23,7 @@ export class CardSearchService {
   }
 
   // This method returns a card by Scryfall id, but there are also mtg ids and our own ids. which is best?
-  getCardById(id: number): Observable<any> {
+  getCardById(id: string): Observable<any> {
     return this.http.get(`https://api.scryfall.com/cards/${id}`)
   }
 
@@ -41,13 +41,13 @@ export class CardSearchService {
 
   addCard(c:Card): Observable<User []> {
     console.log(c);
-    return this.http.post<User []>('http://localhost:8085/MDB/card', c)
+    return this.http.post<User []>('http://54.211.173.35:8085/MDB/card', c)
       .pipe(
         catchError(this.handleError<any>('addCard'))
       );
   }
 
   deleteCard(c: Card): Observable<Card> {
-    return this.http.delete<Card>('http://localhost:8085/MDB/card'); 
+    return this.http.delete<Card>('http://54.211.173.35:8085/MDB/card'); 
   }
 }
