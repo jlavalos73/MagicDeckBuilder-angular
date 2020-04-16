@@ -30,3 +30,22 @@
         </table>
     </li>
 </ul>
+<form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <label for="email">Deck Name</label>
+    <div class="form-label-group">
+      <input
+        name="name"
+        type="name"
+        id="name"
+        value=""
+        class="form-control"
+        formControlName="name"
+        required
+        autofocus
+      />
+      <button
+      class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+      type="submit"
+    >
+      Add New Deck
+    </button>

@@ -8,22 +8,23 @@
               <div class="row">
                 <div class="col-md-9 col-lg-8 mx-auto">
                   <h3 class="login-heading mb-4">Register New Account</h3>
-                    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">      
+                    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+                        <label for="email">Email </label>      
                         <div class="form-label-group">
-                            <label for="email">Email </label>
                           <input type="text" name="email" id="email" value="email" placeholder="email@website.com" formControlName="email" />
                       
                         </div>
+                        <label for="password">Password </label>
                         <div class = "form-label-group">
-                            <label for="password">Password </label>
+                            
                             <input type="password" name="password" id="password" placeholder="password" formControlName="password"/>
                         </div>
+                        <label for="first">First Name </label>
                         <div class="form-label-group">
-                            <label for="first">First Name </label>
                             <input type="text" name="first" id="first" placeholder="Richard" formControlName="first"/>
                         </div>
+                        <label for="last">Last Name </label>
                         <div class="form-label-group">
-                            <label for="last">Last Name </label>
                             <input type="text" name="last" id="last" placeholder="Garfield" formControlName="last"/>
                         </div>
                         <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Register</button>
