@@ -2,8 +2,6 @@
 <nav>
     <a routerLink="/login" routerLinkActive="active">Login</a>
     <a routerLink="/search" routerLinkActive="active">Search</a>
-    <span *ngIf="isLoggedIn">
-    <a routerLink="/decks" routerLinkActive="active">Decks</a>
-    </span>
+    <a *ngIf="isLoggedIn" routerLink="/decks" routerLinkActive="active">Decks</a>
 </nav>
 <router-outlet></router-outlet>

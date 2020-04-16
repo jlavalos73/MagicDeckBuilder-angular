@@ -26,19 +26,19 @@ export class LoginComponent implements OnInit {
       email: "",
       password: ""
     });
-    this.loginserv.isLoggedIn().subscribe(value  => this.isLoggedIn);
+    this.isLoggedIn = this.loginserv.isLoggedIn();
   }
 
   onSubmit(): void {
     this.email = this.uploadForm.controls.email.value;
     this.password = this.uploadForm.controls.password.value;
     this.loginserv.login(this.email, this.password);
-    this.loginserv.isLoggedIn().subscribe(value => this.isLoggedIn);
+    this.isLoggedIn = this.loginserv.isLoggedIn();
     
   }
 
   logout() {
     this.loginserv.logout();
-    this.loginserv.isLoggedIn().subscribe(value =>  this.isLoggedIn);
+    this.isLoggedIn = this.loginserv.isLoggedIn();
   }
 }
