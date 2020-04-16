@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { Card } from './models/card';
 import { User } from './models/user';
@@ -22,26 +22,14 @@ export class CardSearchService {
     }
   }
 
-  getCards(): Observable<Card []> {
-    return this.http.get<Card []>("https://api.scryfall.com/catalog/card-names")
-      .pipe(
-        catchError(this.handleError<Card []>('getCards', []))
-      );
+  // This method returns a card by Scryfall id, but there are also mtg ids and our own ids. which is best?
+  getCardById(id: number): Observable<any> {
+    return this.http.get(`https://api.scryfall.com/cards/${id}`)
   }
 
-  // This method returns a card by Scryfall id, but there are also mtg ids and our own ids. which is best?
-  // getCardById(id: number): Observable<Card> {
-  //   return this.http.get<Card>(`https://api.scryfall.com/cards/${id}`)
-  //     .pipe(
-  //       catchError(this.handleError<Card>('getCardById'))
-  //     );
-  // }
+  searchByName(searchTerms): Observable<any> {
+    return this.http.get(`https://api.scryfall.com/cards/search?=name&q=${searchTerms}`)
 
-  searchByName(name: string): Observable<Card []> {
-    return this.http.get<Card []>(`https://api.scryfall.com/cards/search?=name&q=${name}`)
-      .pipe(
-        catchError(this.handleError<Card []>('getCardByName', []))
-      );
   }
 
   getCardRandom(): Observable<Card> {

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn: boolean;
   userObs: Observable<User>;
   uploadForm: FormGroup;
-  email: string; 
+  email: string;
   password: string;
   constructor(
     private loginserv: LoginService,
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
     this.uploadForm = this.formBuilder.group({
       email: "",
       password: ""
-    })
-    this.loginserv.isLoggedIn().subscribe(value  => this.isLoggedIn)
+    });
+    this.loginserv.isLoggedIn().subscribe(value  => this.isLoggedIn);
   }
 
   onSubmit(): void {

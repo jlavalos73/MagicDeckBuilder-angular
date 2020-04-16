@@ -1,0 +1,35 @@
+<h1>Search for MtG Cards</h1>
+
+<!-- <div style=" margin: auto; width: 50%; border: 3px solid green; padding: 10px">
+    <select [(ngModel)]="cardSelected" (ngModelChange)='onCardSelected($event)' >
+        <option *ngFor='let card of defaultResults' [value]="card.id">{{card.name}}</option>
+    </select>
+</div> -->
+
+<div style=" margin: auto; width: 50%; border: 3px solid green; padding: 10px">
+    <input [(ngModel)]="searchTerms" name="searchTerms" type="search" placeholder="Search by card name">
+    <button (click)="searchCards()">Search</button>
+</div>
+
+<div *ngIf="searched">
+    <table>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Text</th>
+            <th>Mana</th>
+            <th>Power</th>
+            <th>Toughness</th>
+        </tr>
+        <tr  *ngFor="let card of searchResults">
+            <th><img src="{{card.image_uris.small}}"></th>
+            <td><a routerLink="/card/{{card.id}}">{{card.name}}</a></td>
+            <td>{{card.type_line}}</td>
+            <td>{{card.oracle_text}}</td>
+            <td>{{card.mana_cost}}</td>
+            <td>{{card.power}}</td>
+            <td>{{card.toughness}}</td>
+        </tr>
+    </table>
+</div>
