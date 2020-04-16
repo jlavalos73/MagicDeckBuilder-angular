@@ -24,32 +24,29 @@ export class LoginService {
      }
 
      private hasToken(): boolean {
-       return !!localStorage.getItem("currentUser");
+       return !!localStorage.getItem('currentUser');
      }
 
-     isLoggedIn(): Observable<boolean>{
+     isLoggedIn(): Observable<boolean> {
        return this.isLoginSubject.asObservable();
      }
 
      login(email: string, password: string) {
-       const login = new Login();
+       let login = new Login();
        login.email = email;
        login.password = password;
-       this.http.post<boolean>(`http://54.211.173.35:8085/MDB/auth/${email}`,  login)
-       .pipe(map( data => {
-        if (data) {
-          this.http.get<User>(`http://54.211.171.35:8085/MDB/auth/${email}`)
-          .pipe(map((data: any) => {
+       console.log(login);
+       this.http.post<User>(`http://54.211.173.35:8085/MDB/auth`,  login)
+        // removed first pipe and second GET http query : not needed
+       .pipe(map((data: User) => {
             localStorage.setItem('currentUser', JSON.stringify(data));
             this.currentUserSubject.next(data);
+            return data;
         })).subscribe();
-      }
-    }
-    )).subscribe();
      }
 
      register(user: User) {
-       this.http.post("http://54.211.173.35:8085/MDB/User", user)
+       this.http.post('http://54.211.173.35:8085/MDB/user', user);
      }
 
      logout() {

@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.password = this.uploadForm.controls.password.value;
     this.loginserv.login(this.email, this.password);
     this.loginserv.isLoggedIn().subscribe(value => this.isLoggedIn);
+    
   }
 
   logout() {
