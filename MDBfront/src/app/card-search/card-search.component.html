@@ -23,7 +23,7 @@
             <th>Toughness</th>
             <th>Option</th>
         </tr>
-        <tr  *ngFor="let card of searchResults" style="border: 1px solid black;">
+        <tr *ngFor="let card of searchResults" style="border: 1px solid black;">
             <th><img src="{{card.image_uris.art_crop}}" style="width: 100px"></th>
             <td><a routerLink="/card/{{card.id}}">{{card.name}}</a></td>
             <td>{{card.type_line}}</td>

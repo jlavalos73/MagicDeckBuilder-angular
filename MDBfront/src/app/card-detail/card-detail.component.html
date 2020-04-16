@@ -1,6 +1,22 @@
 <img src="{{card.image_uris.normal}}">
 
+<h2>Details</h2>
 <div>
-    <table></table>
-    <table></table>
+    <p>Set Name: </p>
+    <p>{{card.set_name}}</p>
 </div>
+<div>
+    <p>Rarity: </p>
+    <p>{{card.rarity}}</p>
+</div>
+<div>
+    <p>Price: $</p>
+    <p>{{card.prices.usd}}</p>
+</div>
+<div>
+    <p>Buy from:</p>
+    <button><a href="{{card.purchase_uris.tcgplayer}}">TCG Player</a></button>
+    <button><a href="{{card.purchase_uris.cardmarket}}">Card Market</a></button>
+    <button><a href="{{card.purchase_uris.cardhoarder}}">Card Hoarder</a></button>
+</div>
+<button>Add Card to Deck</button>
