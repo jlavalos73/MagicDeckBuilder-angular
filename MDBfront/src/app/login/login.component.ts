@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { Observable } from 'rxjs';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,19 +14,20 @@ export class LoginComponent implements OnInit {
   isLoggedIn: boolean;
   userObs: Observable<User>;
   uploadForm: FormGroup;
-  email: string; 
+  email: string;
   password: string;
   constructor(
     private loginserv: LoginService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
-      email: "",
-      password: ""
-    })
-    this.loginserv.isLoggedIn().subscribe(value  => this.isLoggedIn)
+      email: '',
+      password: ''
+    });
+    this.loginserv.isLoggedIn().subscribe(value => this.isLoggedIn);
   }
 
   onSubmit(): void {
@@ -38,6 +39,6 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.loginserv.logout();
-    this.loginserv.isLoggedIn().subscribe(value =>  this.isLoggedIn);
+    this.loginserv.isLoggedIn().subscribe(value => this.isLoggedIn);
   }
 }

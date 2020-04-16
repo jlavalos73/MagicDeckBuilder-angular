@@ -5,9 +5,9 @@ import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { Card } from '../../models/card';
-import { User } from '../../models/user';
-import { CardSearchService } from '../../card-search.service';
+import { Card } from '../models/card';
+import { User } from '../models/user';
+import { CardSearchService } from '../card-search.service';
 
 @Component({
   selector: 'app-card-search',
@@ -17,17 +17,17 @@ import { CardSearchService } from '../../card-search.service';
 export class CardSearchComponent implements OnInit {
 
   user: User;
-  searchedCards: boolean = false;
+  searchedCards = false;
   searchResult: Card[];
   card: Card;
-  
+
   constructor(
     private route: ActivatedRoute,
     private searchService: CardSearchService,
     private location: Location,
     private http: HttpClient,
   ) {}
-   
+
   ngOnInit(): void {
 
   }

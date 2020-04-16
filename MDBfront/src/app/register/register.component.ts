@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { LoginService } from '../login.service';
+import { Deck } from '../models/deck';
 
 @Component({
   selector: 'app-register',
@@ -12,12 +13,12 @@ import { LoginService } from '../login.service';
 export class RegisterComponent implements OnInit {
   userObs: Observable<User>;
   uploadForm: FormGroup;
-  email: string; 
+  email: string;
   password: string;
   first: string;
   last: string;
   isRegistering: boolean;
-  newuser: User = <User>{};
+  newuser: User =  {} as User;
   constructor(
     private loginserv: LoginService,
     private formBuilder: FormBuilder
@@ -25,11 +26,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
-      email: "",
-      password: "",
-      first: "",
-      last: ""
-    })
+      email: '',
+      password: '',
+      first: '',
+      last: ''
+    });
     this.isRegistering = true;
   }
 
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
     this.newuser.password = this.uploadForm.controls.password.value;
     this.newuser.firstName = this.uploadForm.controls.first.value;
     this.newuser.lastName = this.uploadForm.controls.last.value;
+    this.newuser.decks = null;
     this.loginserv.register(this.newuser);
     this.isRegistering = false;
   }
