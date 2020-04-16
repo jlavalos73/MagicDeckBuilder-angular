@@ -14,45 +14,46 @@ export class LoginService {
   public currentUser: Observable<User>;
   public isLoginSubject = new BehaviorSubject<boolean>(this.hasToken());
   constructor(private http: HttpClient
-  ) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
-  }
+    ) {
+      this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+      this.currentUser = this.currentUserSubject.asObservable();
+     }
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
-  }
+     public get currentUserValue(): User {
+        return this.currentUserSubject.value;
+     }
 
-  private hasToken(): boolean {
-    return !!localStorage.getItem('currentUser');
-  }
+     private hasToken(): boolean {
+       return !!localStorage.getItem("currentUser");
+     }
 
-  isLoggedIn(): Observable<boolean> {
-    return this.isLoginSubject.asObservable();
-  }
+     isLoggedIn(): Observable<boolean>{
+       return this.isLoginSubject.asObservable();
+     }
 
-  login(email: string, password: string) {
-    let login = new Login();
-    login.email = email;
-    login.password = password;
+     login(email: string, password: string) {
+       const login = new Login();
+       login.email = email;
+       login.password = password;
+       this.http.post<boolean>(`http://54.211.173.35:8085/MDB/auth/${email}`,  login)
+       .pipe(map( data => {
+        if (data) {
+          this.http.get<User>(`http://54.211.171.35:8085/MDB/auth/${email}`)
+          .pipe(map((data: any) => {
+            localStorage.setItem('currentUser', JSON.stringify(data));
+            this.currentUserSubject.next(data);
+        })).subscribe();
+      }
+    }
+    )).subscribe();
+     }
 
-    return this.http.post<User>(`http://54.211.173.35:8085/MDB/auth`, login)
-      .pipe(map((user: User) => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        console.log(user);
-      })).subscribe();
-  }
+     register(user: User) {
+       this.http.post("http://54.211.173.35:8085/MDB/User", user)
+     }
 
-  register(user: User) {
-    return this.http.post<User>('http://54.211.173.35:8085/MDB/user', user).pipe(
-      map((u: User) => {
-        console.log('LoginService - register(User) method executed' + '\nUSER: ' + u);
-      })).subscribe();
-  }
-
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-  }
+     logout() {
+       localStorage.removeItem('currentUser');
+       this.currentUserSubject.next(null);
+     }
 }
