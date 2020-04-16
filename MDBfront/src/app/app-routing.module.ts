@@ -52,6 +52,13 @@ const routes: Routes = [
     component: CardDetailComponent
   },
 
+  //Card details route
+  {
+    path:'d/:id',
+    component: CardDetailComponent
+  },
+
+
 ];
 
 @NgModule({
