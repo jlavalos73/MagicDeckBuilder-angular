@@ -25,6 +25,7 @@ export class CardSearchComponent implements OnInit {
   cardSelected: number;
   cardInfo: Object;
   searchResults: Array<any>;
+  items = [];
 
   
   constructor(
@@ -48,12 +49,20 @@ export class CardSearchComponent implements OnInit {
         this.cardInfo = res;
       });
   }
+  
   searchCards(): void {
     this.searchService.searchByName(this.searchTerms)
       .subscribe((res:any) => {
+        console.log(res);
         this.searched = true;
         this.searchResults = res.data.slice(0, 9);
+
       })
+  }
+
+
+  onChangePage(searchResults: Array<any>) {
+    this.searchResults = searchResults;
   }
 
   goBack(): void {

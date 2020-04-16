@@ -20,7 +20,7 @@ import { MatTableModule } from '@angular/material/table';
     RegisterComponent,
     LoginComponent,
     DeckViewComponent,
-    CardSearchComponent
+    CardSearchComponent,
   ],
   imports: [
     BrowserModule,
