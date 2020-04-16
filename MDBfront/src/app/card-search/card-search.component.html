@@ -6,30 +6,33 @@
     </select>
 </div> -->
 
-<div style=" margin: auto; width: 50%; border: 3px solid green; padding: 10px">
+<div>
     <input [(ngModel)]="searchTerms" name="searchTerms" type="search" placeholder="Search by card name">
     <button (click)="searchCards()">Search</button>
 </div>
 
 <div *ngIf="searched">
-    <table>
-        <tr>
+    <table style="border: 1px solid black;">
+        <tr style="border: 1px solid black;">
             <th>Image</th>
             <th>Name</th>
             <th>Type</th>
-            <th>Text</th>
+            <!-- <th>Actions</th> -->
             <th>Mana</th>
             <th>Power</th>
             <th>Toughness</th>
+            <th>Option</th>
         </tr>
-        <tr  *ngFor="let card of searchResults">
+        <tr  *ngFor="let card of searchResults" style="border: 1px solid black;">
             <th><img src="{{card.image_uris.art_crop}}" style="width: 100px"></th>
             <td><a routerLink="/card/{{card.id}}">{{card.name}}</a></td>
             <td>{{card.type_line}}</td>
-            <td>{{card.oracle_text}}</td>
+            <!-- <td>{{card.oracle_text}}</td> -->
             <td>{{card.mana_cost}}</td>
             <td>{{card.power}}</td>
             <td>{{card.toughness}}</td>
+            <td><button>Add Card to Deck</button></td>
         </tr>
     </table>
+
 </div>
