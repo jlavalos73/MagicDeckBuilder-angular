@@ -30,7 +30,7 @@ export class CardDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.searchService.getCardById(id)
       .subscribe((res: any) => {
         console.log(res);
