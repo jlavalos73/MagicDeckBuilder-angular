@@ -18,16 +18,14 @@ import { CardSearchService } from '../card-search.service';
 export class CardDetailComponent implements OnInit {
 
   cardFound = false;
-  card = {image_uris: {normal:null}};
+  card = Object;
 
   constructor(
     private route: ActivatedRoute,
     private searchService: CardSearchService,
     private location: Location,
     private http: HttpClient,
-  ) {
-    this.card.image_uris = {normal: 'https://via.placeholder.com/300/09f.png/fff'};
-  }
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
