@@ -18,7 +18,7 @@ import { CardSearchService } from '../card-search.service';
 export class CardDetailComponent implements OnInit {
 
   cardFound = false;
-  card = Object;
+  card: any;
 
   constructor(
     private route: ActivatedRoute,
