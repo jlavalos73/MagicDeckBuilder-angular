@@ -1,7 +1,11 @@
+<div class="container">
+
 <h1>{{title}}</h1>
 <nav>
     <a routerLink="/login" routerLinkActive="active">Login</a>
     <a routerLink="/search" routerLinkActive="active">Search</a>
+    <a *ngIf="isLoggedIn" routerLink="/user/profile" routerLinkActive="active">Profile</a>
     <a *ngIf="isLoggedIn" routerLink="/decks" routerLinkActive="active">Decks</a>
 </nav>
 <router-outlet></router-outlet>
+</div>
