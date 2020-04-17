@@ -9,14 +9,14 @@
                 <div class="col-md-9 col-lg-8 mx-auto">
                   <h3 class="login-heading mb-4">Register New Account</h3>
                     <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-                        <label for="email">Email </label>      
+                        <label for="email">Email </label>
                         <div class="form-label-group">
                           <input type="text" name="email" id="email" value="email" placeholder="email@website.com" formControlName="email" />
-                      
+
                         </div>
                         <label for="password">Password </label>
                         <div class = "form-label-group">
-                            
+
                             <input type="password" name="password" id="password" placeholder="password" formControlName="password"/>
                         </div>
                         <label for="first">First Name </label>
