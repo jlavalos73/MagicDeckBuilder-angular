@@ -1,0 +1,94 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<div class="container">
+  <div class="row profile">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img
+            src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg"
+            class="img-responsive"
+            alt=""
+          />
+        </div>
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            Marcus Doe
+          </div>
+          <div class="profile-usertitle-job">
+            Developer
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <button type="button" class="btn btn-success btn-sm">Follow</button>
+          <button type="button" class="btn btn-danger btn-sm">Message</button>
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+          <ul class="nav">
+            <li class="active">
+              <a href="#">
+                <i class="glyphicon glyphicon-home"></i>
+                Overview
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="glyphicon glyphicon-user"></i>
+                Account Settings
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="glyphicon glyphicon-ok"></i>
+                Tasks
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="glyphicon glyphicon-flag"></i>
+                Help
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- END MENU -->
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="profile-content">
+        <!--CONTENT INSIDE-->
+        <div *ngIf="user.decks?.length == 0">
+          <div class="card">
+            <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+              <div class="card-header">Decks</div>
+              <div class="card-body">
+
+                  <h3 class="card-title"><strong>0</strong></h3>
+                  <p class="card-text">No Decks? No Problem. Start creating them here
+                  <a routerLink="/"></a></p>
+                  <p class="card-text">No Decks? No Problem.</p>
+
+                </div>
+                <h3 class="card-title">{{user.decks?.length||'0'}}</h3>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-columns">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { CardSearchComponent } from './card-search/card-search.component';
 import { RegisterComponent } from './register/register.component';
 import { CardDetailComponent } from './card-detail/card-detail.component';
 import { DeckViewComponent } from './deck-view/deck-view.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 // import { MdbModule } from './mdb/mdb.module';
 
 
@@ -41,6 +42,7 @@ const routes: Routes = [
   //   canLoad: [MDBGuard]
   // },
 
+
   //Search route
   {
     path: 'search',
@@ -65,6 +67,11 @@ const routes: Routes = [
     component: DeckViewComponent
   },
 
+  //User profile home page
+  {
+    path:'user/profile',
+    component: UserProfileComponent
+  }
 
 ];
 

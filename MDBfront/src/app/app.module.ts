@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DeckViewComponent } from './deck-view/deck-view.component'; 
 import { MatTableModule } from '@angular/material/table';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatTableModule } from '@angular/material/table';
     RegisterComponent,
     LoginComponent,
     DeckViewComponent,
-    CardSearchComponent
+    CardSearchComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
