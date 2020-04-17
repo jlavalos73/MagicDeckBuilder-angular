@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Login } from './models/login';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class LoginService {
     'Accept': 'application/json', })
   };
 
+  private router: Router;
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   public isLoginSubject = new BehaviorSubject<boolean>(this.hasToken());
@@ -22,6 +24,7 @@ export class LoginService {
     ) {
       this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
       this.currentUser = this.currentUserSubject.asObservable();
+      
      }
 
      public get currentUserValue(): User {
@@ -53,6 +56,7 @@ export class LoginService {
        .pipe(map((data: any) => {
         localStorage.setItem('currentUser', JSON.stringify(data));
         this.currentUserSubject.next(data);
+        this.router.navigate(['/decks'])
       })).subscribe();
      }
 
