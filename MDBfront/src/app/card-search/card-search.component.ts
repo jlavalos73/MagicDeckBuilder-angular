@@ -9,6 +9,8 @@ import { Card } from '../models/card';
 import { User } from '../models/user';
 import { CardSearchService } from '../card-search.service';
 
+
+
 @Component({
   selector: 'app-card-search',
   templateUrl: './card-search.component.html',
@@ -25,6 +27,7 @@ export class CardSearchComponent implements OnInit {
   cardSelected: number;
   cardInfo: Object;
   searchResults: Array<any>;
+  page = 1;
   items = [];
 
   
@@ -55,7 +58,7 @@ export class CardSearchComponent implements OnInit {
       .subscribe((res:any) => {
         console.log(res);
         this.searched = true;
-        this.searchResults = res.data.slice(0, 9);
+        this.searchResults = res.data;//.slice(10, 19);
 
       })
   }
