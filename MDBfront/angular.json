@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "MDBfront": {
@@ -22,11 +22,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +115,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MDBfront"
+    }
+  },
+  "defaultProject": "MDBfront",
+  "cli": {
+    "analytics": "75929116-bd1e-4a9e-bdf6-7cdf24e52939"
+  }
 }

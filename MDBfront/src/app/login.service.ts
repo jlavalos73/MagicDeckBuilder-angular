@@ -10,6 +10,11 @@ import { map } from 'rxjs/operators';
 })
 export class LoginService {
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json',
+    'Accept': 'application/json', })
+  };
+
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   public isLoginSubject = new BehaviorSubject<boolean>(this.hasToken());
@@ -24,28 +29,35 @@ export class LoginService {
      }
 
      private hasToken(): boolean {
-       return !!localStorage.getItem("currentUser");
+       return localStorage.getItem("currentUser") !== null;
      }
 
-     isLoggedIn(): Observable<boolean>{
-       return this.isLoginSubject.asObservable();
+     isLoggedIn():boolean{
+       return localStorage.getItem("currentUser") !== null;
      }
 
      login(email: string, password: string) {
        const login = new Login();
        login.email = email;
        login.password = password;
-       this.http.post<boolean>(`http://54.211.173.35:8085/MDBback/auth/${email}`,  login)
-       .pipe(map( data => {
-        if (data) {
-          this.http.get<User>(`http://localhost:8080/project1/login/${email}`)
+        this.http.post<User>(`http://54.211.173.35:8085/MDB/auth`, login)
           .pipe(map((data: any) => {
             localStorage.setItem('currentUser', JSON.stringify(data));
             this.currentUserSubject.next(data);
         })).subscribe();
       }
-    }
-    )).subscribe();
+
+     register(user: User) {
+       console.log(JSON.stringify(user));
+       this.http.post<User>("http://54.211.173.35:8085/MDB/user", JSON.stringify(user), this.httpOptions)
+       .pipe(map((data: any) => {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        this.currentUserSubject.next(data);
+      })).subscribe();
+     }
+
+     update(user: User){
+       this.http.patch<User>("http://54.211.173.35:8085/MDB/user", JSON.stringify(user), this.httpOptions)
      }
 
      logout() {

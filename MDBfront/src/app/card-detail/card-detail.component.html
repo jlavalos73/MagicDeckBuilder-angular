@@ -1,0 +1,31 @@
+
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-xl-6">
+        <img src="{{card.image_uris.normal}}">
+    </div>  
+    <div class="col-md-12 col-lg-12 col-xl-6">
+        <h2>Details</h2>
+        <table id="details">
+            <tr>
+                <td>Set Name: {{card.set_name}}</td>
+            </tr>
+            <tr>
+                <td>Rarity: {{card.rarity}}</td>
+            </tr>
+            <tr>
+                <td>Price: ${{card.prices.usd}}</td>
+            </tr>
+        </table>
+        <br/>
+        
+        <p>Buy from:</p>
+        <button><a href="{{card.purchase_uris.tcgplayer}}">TCG Player</a></button>
+        <button><a href="{{card.purchase_uris.cardmarket}}">Card Market</a></button>
+        <button><a href="{{card.purchase_uris.cardhoarder}}">Card Hoarder</a></button>
+        <br/>
+        <br/>
+        <button (click)="cardToDeck()">Add Card to Deck</button>
+    </div>
+
+</div>
+    
