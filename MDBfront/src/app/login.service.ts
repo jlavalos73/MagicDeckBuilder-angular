@@ -12,8 +12,10 @@ import { Router } from '@angular/router';
 export class LoginService {
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json',
-    'Accept': 'application/json', })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    })
   };
 
   private router: Router;
@@ -24,7 +26,7 @@ export class LoginService {
     ) {
       this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
       this.currentUser = this.currentUserSubject.asObservable();
-      
+
      }
 
      public get currentUserValue(): User {
@@ -58,7 +60,7 @@ export class LoginService {
         this.currentUserSubject.next(data);
         this.router.navigate(['/decks'])
       })).subscribe();
-     }
+  }
 
      update(user: User){
        this.http.patch<User>("http://54.211.173.35:8085/MDB/user", JSON.stringify(user), this.httpOptions)
