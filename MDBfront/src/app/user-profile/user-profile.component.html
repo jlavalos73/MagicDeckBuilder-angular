@@ -19,75 +19,82 @@
         <!-- SIDEBAR USER TITLE -->
         <div class="profile-usertitle">
           <div class="profile-usertitle-name">
-            Marcus Doe
+            {{user.firstName + ' ' +user.lastName}}
           </div>
           <div class="profile-usertitle-job">
-            Developer
+            Email: {{user.email}}
           </div>
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR BUTTONS -->
-        <div class="profile-userbuttons">
-          <button type="button" class="btn btn-success btn-sm">Follow</button>
-          <button type="button" class="btn btn-danger btn-sm">Message</button>
-        </div>
+
         <!-- END SIDEBAR BUTTONS -->
         <!-- SIDEBAR MENU -->
         <div class="profile-usermenu">
-          <ul class="nav">
-            <li class="active">
-              <a href="#">
-                <i class="glyphicon glyphicon-home"></i>
-                Overview
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-user"></i>
-                Account Settings
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_blank">
-                <i class="glyphicon glyphicon-ok"></i>
-                Tasks
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-flag"></i>
-                Help
-              </a>
-            </li>
-          </ul>
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-decks-list" data-toggle="list" href="#list-decks" role="tab" aria-controls="decks">Decks</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-stats" role="tab" aria-controls="stats" disabled>Stats</a>
+          </div>
         </div>
         <!-- END MENU -->
       </div>
     </div>
     <div class="col-md-9">
-      <div class="profile-content">
+      <div id="profileContent">
         <!--CONTENT INSIDE-->
-        <div *ngIf="user.decks?.length == 0">
-          <div class="card">
-            <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-              <div class="card-header">Decks</div>
-              <div class="card-body">
-
-                  <h3 class="card-title"><strong>0</strong></h3>
-                  <p class="card-text">No Decks? No Problem. Start creating them here
-                  <a routerLink="/"></a></p>
-                  <p class="card-text">No Decks? No Problem.</p>
-
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="list-decks" role="tabpanel" aria-labelledby="list-decks-list">
+            <!--DECKS LIST-->
+<!--If no decks-->
+            <div class="row" *ngIf="user.decks?.length == 0">
+              <div class="col-md-1"></div>
+              <div class="col-md-7">
+                <div class="card border-danger mb-5" style="max-width: 100%;">
+                  <div class="card-body text-danger text-center">
+                      <h1 class="card-title"><strong>0 Decks</strong></h1>
+                      <p class="card-text">No decks yet?</p>
+                      <a class="btn btn-outline-dark btn-large" routerLink="/decks">Start creating them!</a>
+                  </div>
                 </div>
-                <h3 class="card-title">{{user.decks?.length||'0'}}</h3>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+<!--Else-->
+            <div class="row" *ngIf="user.decks?.length > 0">
+              <div class="col-md-1"></div>
+              <div class="card col-md-7">
+                <div class="card border-primary mb-3" style="max-width: 100%;">
+                  <div class="card-body text-danger text-center">
+                      <h1 class="card-title"><strong>{{user.decks?.length}} Decks</strong></h1>
+                      <a class="btn btn-outline-dark btn-large" routerLink="/decks">View them here.</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="card-columns">
+          <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+            <form [formGroup]="editorForm" (ngSubmit)="onSaveProfile()">
+              <label for="email">Email </label>
+              <div class="form-label-group">
+                <input type="text" name="email" id="email" placeholder="{{user.email}}" formControlName="email" />
+              </div>
+              <label for="first">First Name </label>
+              <div class="form-label-group">
+                  <input type="text" name="firstName" id="firstName" placeholder="{{user.firstName}}" formControlName="firstName"/>
+              </div>
+              <label for="last">Last Name </label>
+              <div class="form-label-group">
+                  <input type="text" name="lastName" id="lastName" placeholder="{{user.lastName}}" formControlName="lastName"/>
+              </div>
+              <button class="btn btn-outline-success btn-block font-weight-bold mb-2" type="submit">Save Changes!</button>
 
+          </form>
+          </div>
+          <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+          <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
         </div>
+
+
       </div>
     </div>
   </div>

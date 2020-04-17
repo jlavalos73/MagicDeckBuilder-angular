@@ -8,10 +8,13 @@ export class UserProfileService {
 
   private currentUser: User;
 
-  constructor() {}
+  constructor() {this.currentUser = JSON.parse(localStorage.getItem('currentUser'));}
+  setCurrentUser(): void {}
+  getCurrentUser(): User { return this.currentUser; }
 
-  setCurrentUser(): void {this.currentUser = JSON.parse(localStorage.getItem('currentUser'));}
-  getCurrentUser(): User { return JSON.parse(localStorage.getItem('currentUser')); }
+  update(user:User){
+    return;
+  }
 
 
 }

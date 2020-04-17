@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { User } from '../models/user';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginserv: LoginService,
     private formBuilder: FormBuilder,
-    private router : Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.email = this.uploadForm.controls.email.value;
     this.password = this.uploadForm.controls.password.value;
     this.loginserv.login(this.email, this.password);
-    Observable.create(this.loginserv.isLoggedIn()).subscribe(value => this.isLoggedIn);
+    this.isLoggedIn = this.loginserv.isLoggedIn();
     this.router.navigate(['/user/profile']);
   }
 
