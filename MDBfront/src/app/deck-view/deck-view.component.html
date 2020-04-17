@@ -1,4 +1,4 @@
-<h2>View Your Deck</h2>
+<h2>{{currentUser.firstName}} View Decks</h2>
 <ul>
     <li *ngFor="let deck of decks" (click)="setCurrentDeck(deck)">
         {{deck.name}}
@@ -29,7 +29,6 @@
                     <td mat-cell *matCellDef="let card"> {{card.toughness}} </td>
                 </ng-container>
             </table>
-            <app-card-search></app-card-search>
         </div>
     </li>
 </ul>
