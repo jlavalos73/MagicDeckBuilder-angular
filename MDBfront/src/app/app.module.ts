@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
 
-import { DeckViewComponent } from './deck-view/deck-view.component'; 
+import { DeckViewComponent } from './deck-view/deck-view.component';
 import { MatTableModule } from '@angular/material/table';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 

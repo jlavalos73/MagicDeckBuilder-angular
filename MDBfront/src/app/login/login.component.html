@@ -8,6 +8,7 @@
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Sign In</h3>
               <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+                <label for="email">Email address</label>
                 <div class="form-label-group">
                   <input
                     name="email"
@@ -19,10 +20,9 @@
                     required
                     autofocus
                   />
-
-                  <label for="email">Email address</label>
                 </div>
-
+                
+                <label for="password">Password </label>
                 <div class="form-label-group">
                   <input
                     class="form-control"
@@ -32,7 +32,6 @@
                     placeholder="password"
                     formControlName="password"
                   />
-                  <label for="password">Password </label>
                 </div>
 
                 <!-- <div class="custom-control custom-checkbox mb-3">
@@ -59,7 +58,6 @@
     </div>
   </div>
 </div>
-
 <div *ngIf="isLoggedIn">
   <button (click)="logout()">Logout</button>
 </div>

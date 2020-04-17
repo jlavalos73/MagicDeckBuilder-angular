@@ -2,31 +2,53 @@
 <ul>
     <li *ngFor="let deck of decks" (click)="setCurrentDeck(deck)">
         {{deck.name}}
-        <table mat-table [dataSource]="deck.cards" *ngIf="deck == currentDeck">
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef>Name</th>
-                <td mat-cell *matCellDef="let card"> {{card.name}} </td>
-            </ng-container>
-            <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef>Type</th>
-                <td mat-cell *matCellDef="let card"> {{card.type}} </td>
-            </ng-container>
-            <ng-container matColumnDef="bodyText">
-                <th mat-header-cell *matHeaderCellDef>Body Text</th>
-                <td mat-cell *matCellDef="let card"> {{card.text}} </td>
-            </ng-container>
-            <ng-container matColumnDef="mana">
-                <th mat-header-cell *matHeaderCellDef>Mana Cost</th>
-                <td mat-cell *matCellDef="let card"> {{card.mana}} </td>
-            </ng-container>
-            <ng-container matColumnDef="power">
-                <th mat-header-cell *matHeaderCellDef>Power</th>
-                <td mat-cell *matCellDef="let card"> {{card.power}} </td>
-            </ng-container>
-            <ng-container matColumnDef="toughness">
-                <th mat-header-cell *matHeaderCellDef>Toughness</th>
-                <td mat-cell *matCellDef="let card"> {{card.toughness}} </td>
-            </ng-container>
-        </table>
+        <div *ngIf="deck == currentDeck">
+            <table mat-table [dataSource]="deck.cards">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let card"> {{card.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef>Type</th>
+                    <td mat-cell *matCellDef="let card"> {{card.type}} </td>
+                </ng-container>
+                <ng-container matColumnDef="bodyText">
+                    <th mat-header-cell *matHeaderCellDef>Body Text</th>
+                    <td mat-cell *matCellDef="let card"> {{card.text}} </td>
+                </ng-container>
+                <ng-container matColumnDef="mana">
+                    <th mat-header-cell *matHeaderCellDef>Mana Cost</th>
+                    <td mat-cell *matCellDef="let card"> {{card.mana}} </td>
+                </ng-container>
+                <ng-container matColumnDef="power">
+                    <th mat-header-cell *matHeaderCellDef>Power</th>
+                    <td mat-cell *matCellDef="let card"> {{card.power}} </td>
+                </ng-container>
+                <ng-container matColumnDef="toughness">
+                    <th mat-header-cell *matHeaderCellDef>Toughness</th>
+                    <td mat-cell *matCellDef="let card"> {{card.toughness}} </td>
+                </ng-container>
+            </table>
+            <app-card-search></app-card-search>
+        </div>
     </li>
 </ul>
+<form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <label for="email">Deck Name</label>
+    <div class="form-label-group">
+      <input
+        name="name"
+        type="name"
+        id="name"
+        value=""
+        class="form-control"
+        formControlName="name"
+        required
+        autofocus
+      />
+      <button
+      class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+      type="submit"
+    >
+      Add New Deck
+    </button>
