@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DeckViewComponent } from './deck-view/deck-view.component'; 
 import { MatTableModule } from '@angular/material/table';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     HttpClientModule,
     MatTableModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
