@@ -56,6 +56,10 @@ export class LoginService {
       })).subscribe();
      }
 
+     update(user: User){
+       this.http.patch<User>("http://54.211.173.35:8085/MDB/user", JSON.stringify(user), this.httpOptions)
+     }
+
      logout() {
        localStorage.removeItem('currentUser');
        this.currentUserSubject.next(null);
