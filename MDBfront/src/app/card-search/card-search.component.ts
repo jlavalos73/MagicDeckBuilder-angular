@@ -8,12 +8,13 @@ import { map, switchMap } from 'rxjs/operators';
 import { Card } from '../models/card';
 import { User } from '../models/user';
 import { CardSearchService } from '../card-search.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-card-search',
   templateUrl: './card-search.component.html',
   styleUrls: ['./card-search.component.css'],
-  providers: [CardSearchService]
+  providers: [CardSearchService, LoginService]
 })
 export class CardSearchComponent implements OnInit {
 
@@ -31,6 +32,7 @@ export class CardSearchComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private searchService: CardSearchService,
+    private ls: LoginService,
     private location: Location,
     private http: HttpClient,
   ) {
@@ -60,10 +62,6 @@ export class CardSearchComponent implements OnInit {
       })
   }
 
-
-  onChangePage(searchResults: Array<any>) {
-    this.searchResults = searchResults;
-  }
 
   goBack(): void {
     this.location.back();
