@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class DeckServiceService {
   addDeck(deck: Deck): Observable<Deck> {
+    console.log(deck);
+    
     return this.http.post<Deck>('http://54.211.173.35:8085/MDB/deck', deck)
   }
 

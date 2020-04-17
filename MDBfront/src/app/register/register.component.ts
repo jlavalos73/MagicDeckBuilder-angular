@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
     this.newuser.password = this.uploadForm.controls.password.value;
     this.newuser.firstName = this.uploadForm.controls.first.value;
     this.newuser.lastName = this.uploadForm.controls.last.value;
-    this.newuser.decks = null;
+    this.newuser.decks = [];
     this.loginserv.register(this.newuser);
     this.isRegistering = false;
   }
