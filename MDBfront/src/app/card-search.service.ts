@@ -40,7 +40,7 @@ export class CardSearchService {
   }
 
   addCard(c:Card): Observable<Card> {
-    console.log(c);
+    console.log(JSON.stringify(c));
     return this.http.post<Card>('http://54.211.173.35:8085/MDB/card', c)
       .pipe(
         catchError(this.handleError<any>('addCard'))

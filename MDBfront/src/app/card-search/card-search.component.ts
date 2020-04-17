@@ -77,8 +77,9 @@ export class CardSearchComponent implements OnInit {
     this.newcard.mana = card.mana_cost;
     this.newcard.power = card.power;
     this.newcard.toughness = card.toughness;
-    this.newcard.deck_id = this.currentDeck.id;
+    this.newcard.deck = this.currentDeck;
     console.log(this.newcard);
+    console.log(this.currentDeck);
     this.searchService.addCard(this.newcard).pipe(map((value: any) => {
       this.newcard = value;
       this.currentDeck.cards.push(this.newcard);

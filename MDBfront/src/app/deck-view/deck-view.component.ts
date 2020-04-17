@@ -41,7 +41,8 @@ export class DeckViewComponent{
 
   onSubmit(){
     this.newDeck.name = this.uploadForm.controls.name.value;
-    this.newDeck.owner = JSON.parse(localStorage.getItem("currentUser"))
+    this.newDeck.owner = JSON.parse(localStorage.getItem("currentUser"));
+    this.newDeck.cards = [];
     this.deckserv.addDeck(this.newDeck).subscribe(value => this.newDeck);
     this.currentUser.decks.push(this.newDeck);
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser))
