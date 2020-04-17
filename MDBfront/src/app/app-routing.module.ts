@@ -72,7 +72,7 @@ const routes: Routes = [
   {
     path:'user/profile',
     component: UserProfileComponent
-  }
+  },
   //Deck Details route
   {
     path:'decks/:id',
