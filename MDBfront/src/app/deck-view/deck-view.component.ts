@@ -18,6 +18,7 @@ export class DeckViewComponent{
   currentDeck: Deck = null;
   uploadForm: FormGroup;
   newDeck: Deck = {} as Deck;
+  public displayedColumns = ['name', 'type', 'bodyText', 'mana', 'power', 'toughness']
   constructor(
     private deckserv: DeckServiceService,
     private logserv: LoginService,

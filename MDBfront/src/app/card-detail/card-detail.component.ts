@@ -52,7 +52,7 @@ export class CardDetailComponent implements OnInit {
           this.ls.currentUser.subscribe(
             (usr: User) => {
               console.log(usr);
-              let c = new Card(0, fullC.name, fullC.type_line, fullC.oracle_text, fullC.mana_cost, fullC.power, fullC.toughness, usr.decks[0]);
+              let c = new Card(0, fullC.name, fullC.type_line, fullC.oracle_text, fullC.mana_cost, fullC.power, fullC.toughness, usr.decks[0].id);
               this.searchService.addCard(c);
             }
           )

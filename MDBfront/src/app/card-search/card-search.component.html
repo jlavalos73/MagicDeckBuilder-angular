@@ -5,6 +5,45 @@
         <option *ngFor='let card of defaultResults' [value]="card.id">{{card.name}}</option>
     </select>
 </div> -->
+<ul>
+    <li *ngFor="let deck of decks" (click)="setCurrentDeck(deck)">
+        {{deck.name}}
+        <div *ngIf="deck == currentDeck">
+            <table mat-table [dataSource]="deck.cards">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let card"> {{card.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef>Type</th>
+                    <td mat-cell *matCellDef="let card"> {{card.type}} </td>
+                </ng-container>
+                <ng-container matColumnDef="bodyText">
+                    <th mat-header-cell *matHeaderCellDef>Body Text</th>
+                    <td mat-cell *matCellDef="let card"> {{card.text}} </td>
+                </ng-container>
+                <ng-container matColumnDef="mana">
+                    <th mat-header-cell *matHeaderCellDef>Mana Cost</th>
+                    <td mat-cell *matCellDef="let card"> {{card.mana}} </td>
+                </ng-container>
+                <ng-container matColumnDef="power">
+                    <th mat-header-cell *matHeaderCellDef>Power</th>
+                    <td mat-cell *matCellDef="let card"> {{card.power}} </td>
+                </ng-container>
+                <ng-container matColumnDef="toughness">
+                    <th mat-header-cell *matHeaderCellDef>Toughness</th>
+                    <td mat-cell *matCellDef="let card"> {{card.toughness}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Remove">
+                    <th mat-header-cell *matHeaderCellDef>Remove</th>
+                    <td mat-cell *matCellDef="let card" (click)="deleteCard(card)"> Remove Card From Deck</td>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </table>
+        </div>
+    </li>
+</ul>
 
 <div>
     <input [(ngModel)]="searchTerms" name="searchTerms" type="search" placeholder="Search by card name">
@@ -21,7 +60,7 @@
                 <th>Mana</th>
                 <th>Power</th>
                 <th>Toughness</th>
-                <th>Option</th>
+                <th *ngIf="currentDeck != null">Option</th>
             </tr>
             <tr *ngFor="let card of searchResults | slice: (page-1) * 10 : (page-1) * 10 + 10" style="border: 1px solid black;">
                 <th><img src="{{card.image_uris.art_crop}}" style="width: 100px"></th>
@@ -31,7 +70,7 @@
                 <td>{{card.mana_cost}}</td>
                 <td>{{card.power}}</td>
                 <td>{{card.toughness}}</td>
-                <td><button>Add Card to Deck</button></td>
+                <td *ngIf="currentDeck != null"><button (click)="addCard(card)">Add Card to Deck</button></td>
             </tr>
         </table>
 

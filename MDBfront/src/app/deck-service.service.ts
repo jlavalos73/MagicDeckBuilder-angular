@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DeckServiceService {
+  updateDeck(currentDeck: Deck) {
+    return this.http.patch('http://54.211.173.35:8085/MDB/deck', currentDeck)
+  }
   addDeck(deck: Deck): Observable<Deck> {
     console.log(deck);
     

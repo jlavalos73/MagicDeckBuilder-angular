@@ -8,9 +8,9 @@ export class Card {
     public mana: string;
     public power: number;
     public toughness: number;
-    public decks: Deck
+    public deck_id: number
 
-    constructor (id: number, name: string, type: string, text: string, mana: string, power: number, toughness: number, decks: Deck) {
+    constructor (id: number, name: string, type: string, text: string, mana: string, power: number, toughness: number, decks: number) {
         this.id =  id,
         this.name = name,
         this.type = type,
@@ -18,6 +18,6 @@ export class Card {
         this.mana = mana,
         this.power = power,
         this.toughness = toughness,
-        this.decks = decks
+        this.deck_id = decks
     }
 }
