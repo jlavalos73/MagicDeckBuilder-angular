@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DeckServiceService {
+  deleteDeck(deck: Deck) {
+    return this.http.put<Deck>('http://54.211.173.35:8085/MDB/deck', deck)
+  }
   updateDeck(currentDeck: Deck) {
     return this.http.patch('http://54.211.173.35:8085/MDB/deck', currentDeck)
   }
@@ -19,7 +22,7 @@ export class DeckServiceService {
 
   constructor(private http:  HttpClient) { }
 
-  getDeck(id: number){
-    return this.http.get(`http://54.211.173.35:8085/MDB/deck/${id}`)
+  getDeck(id: string): Observable<Deck> {
+    return this.http.get<Deck>(`http://54.211.173.35:8085/MDB/deck/${id}`)
   }
 }

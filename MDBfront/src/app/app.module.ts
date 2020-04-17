@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeckViewComponent } from './deck-view/deck-view.component'; 
 import { MatTableModule } from '@angular/material/table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DeckDetailComponent } from './deck-detail/deck-detail.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     DeckViewComponent,
     CardSearchComponent,
+    DeckDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { CardSearchComponent } from './card-search/card-search.component';
 import { RegisterComponent } from './register/register.component';
 import { CardDetailComponent } from './card-detail/card-detail.component';
 import { DeckViewComponent } from './deck-view/deck-view.component';
+import { DeckDetailComponent } from './deck-detail/deck-detail.component';
 // import { MdbModule } from './mdb/mdb.module';
 
 
@@ -63,6 +64,12 @@ const routes: Routes = [
   {
     path:'decks',
     component: DeckViewComponent
+  },
+
+  //Deck Details route
+  {
+    path:'decks/:id',
+    component: DeckDetailComponent
   },
 
 

@@ -5,6 +5,7 @@ import { Deck } from 'src/app/models/deck';
 import { DeckServiceService } from '../deck-service.service';
 import { LoginService } from '../login.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-deck-view',
@@ -20,6 +21,7 @@ export class DeckViewComponent{
   newDeck: Deck = {} as Deck;
   public displayedColumns = ['name', 'type', 'bodyText', 'mana', 'power', 'toughness']
   constructor(
+    private router: Router,
     private deckserv: DeckServiceService,
     private logserv: LoginService,
     private formBuilder: FormBuilder
@@ -33,6 +35,8 @@ export class DeckViewComponent{
   }
   setCurrentDeck(d){
     this.currentDeck = d;
+    localStorage.setItem('currentDeck', JSON.stringify(d));
+    this.router.navigate(['/decks', d.id]);
   }
 
   onSubmit(){
