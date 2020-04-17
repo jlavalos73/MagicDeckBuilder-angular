@@ -24,7 +24,7 @@ import { DeckDetailComponent } from './deck-detail/deck-detail.component';
     LoginComponent,
     DeckViewComponent,
     CardSearchComponent,
-    UserProfileComponent
+    UserProfileComponent,
     DeckDetailComponent,
   ],
   imports: [
