@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { Deck } from '../models/deck';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeckServiceService } from '../deck-service.service';
@@ -34,6 +34,7 @@ export class DeckDetailComponent implements OnInit {
   changeName(): void {
     this.deck.name = this.deckname
     this.deckService.updateDeck(this.deck)
+    localStorage
   }
 
   deleteCard(card: Card) {

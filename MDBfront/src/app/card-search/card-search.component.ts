@@ -33,9 +33,10 @@ export class CardSearchComponent implements OnInit {
   public displayedColumns = ['name', 'type', 'bodyText', 'mana', 'power', 'toughness', 'Remove']
   page = 1;
   items = [];
+  currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
   currentDeck: Deck;
   newcard: Card = {} as Card;
-  decks: Deck[] = JSON.parse(localStorage.getItem('currentUser')).decks;
+  decks: Deck[]
   constructor(
     private route: ActivatedRoute,
     private searchService: CardSearchService,
@@ -51,6 +52,9 @@ export class CardSearchComponent implements OnInit {
     //   .subscribe((res:any) => {
     //     this.defaultResults = res.data;
     //   })
+    if (this.currentUser != null){
+      this.decks = JSON.parse(localStorage.getItem('currentUser')).decks;
+    }
   }
 
   onCardSelected(cardSelected:any):void{

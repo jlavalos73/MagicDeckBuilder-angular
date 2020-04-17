@@ -5,7 +5,7 @@
         <option *ngFor='let card of defaultResults' [value]="card.id">{{card.name}}</option>
     </select>
 </div> -->
-<ul>
+<ul *ngIf="currentUser != null">
     <li *ngFor="let deck of decks" (click)="setCurrentDeck(deck)">
         {{deck.name}}
         <div *ngIf="deck == currentDeck">

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class DeckServiceService {
   deleteDeck(deck: Deck) {
-    return this.http.put<Deck>('http://54.211.173.35:8085/MDB/deck', deck)
+    return this.http.delete<Deck>('http://54.211.173.35:8085/MDB/deck')
   }
   updateDeck(currentDeck: Deck) {
     return this.http.patch('http://54.211.173.35:8085/MDB/deck', currentDeck)
