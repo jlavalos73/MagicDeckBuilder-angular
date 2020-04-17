@@ -24,6 +24,7 @@ export class CardSearchComponent implements OnInit {
 
   // user: User;
   // card: Card;
+  forDeck: Deck
   searched: boolean = false;
   searchTerms: string;
   defaultResults: Array<any>;
@@ -86,8 +87,15 @@ export class CardSearchComponent implements OnInit {
     console.log(this.currentDeck);
     this.searchService.addCard(this.newcard).pipe(map((value: any) => {
       this.newcard = value;
+      for(var i = 0; i < this.currentUser.decks.length; i++){
+        if(this.currentDeck.id == this.currentUser.decks[i].id){
+            this.currentUser.decks.splice(i, 1);
+        }
+      }
       this.currentDeck.cards.push(this.newcard);
       this.deckService.addDeck(this.currentDeck);
+      this.currentUser.decks.push(this.currentDeck);
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser))
       console.log(this.currentDeck);
     })).subscribe();
 
