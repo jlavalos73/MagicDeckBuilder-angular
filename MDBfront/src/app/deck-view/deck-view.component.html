@@ -1,36 +1,7 @@
-<h2>View Your Deck</h2>
+<h2>{{currentUser.firstName}} View Decks</h2>
 <ul>
     <li *ngFor="let deck of decks" (click)="setCurrentDeck(deck)">
         {{deck.name}}
-        <div *ngIf="deck == currentDeck">
-            <table mat-table [dataSource]="deck.cards">
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef>Name</th>
-                    <td mat-cell *matCellDef="let card"> {{card.name}} </td>
-                </ng-container>
-                <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef>Type</th>
-                    <td mat-cell *matCellDef="let card"> {{card.type}} </td>
-                </ng-container>
-                <ng-container matColumnDef="bodyText">
-                    <th mat-header-cell *matHeaderCellDef>Body Text</th>
-                    <td mat-cell *matCellDef="let card"> {{card.text}} </td>
-                </ng-container>
-                <ng-container matColumnDef="mana">
-                    <th mat-header-cell *matHeaderCellDef>Mana Cost</th>
-                    <td mat-cell *matCellDef="let card"> {{card.mana}} </td>
-                </ng-container>
-                <ng-container matColumnDef="power">
-                    <th mat-header-cell *matHeaderCellDef>Power</th>
-                    <td mat-cell *matCellDef="let card"> {{card.power}} </td>
-                </ng-container>
-                <ng-container matColumnDef="toughness">
-                    <th mat-header-cell *matHeaderCellDef>Toughness</th>
-                    <td mat-cell *matCellDef="let card"> {{card.toughness}} </td>
-                </ng-container>
-            </table>
-            <app-card-search></app-card-search>
-        </div>
     </li>
 </ul>
 <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">

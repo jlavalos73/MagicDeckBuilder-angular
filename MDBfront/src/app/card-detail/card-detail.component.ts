@@ -8,12 +8,14 @@ import { map, switchMap } from 'rxjs/operators';
 import { Card } from '../models/card';
 import { User } from '../models/user';
 import { CardSearchService } from '../card-search.service';
+import { LoginService } from '../login.service';
+import { Deck } from '../models/deck';
 
 @Component({
   selector: 'app-card-detail',
   templateUrl: './card-detail.component.html',
   styleUrls: ['./card-detail.component.css'],
-  providers: [CardSearchService]
+  providers: [CardSearchService, LoginService]
 })
 export class CardDetailComponent implements OnInit {
 
@@ -23,6 +25,7 @@ export class CardDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private searchService: CardSearchService,
+    private ls: LoginService,
     private location: Location,
     private http: HttpClient,
   ) {}
@@ -31,10 +34,29 @@ export class CardDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.searchService.getCardById(id)
       .subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
         this.cardFound = true;
         this.card = res;
       });
   }
 
+  cardToDeck() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.searchService.getCardById(id)
+      .subscribe((res: any) => {
+        // console.log(res);
+        let cString = JSON.stringify(res);
+        let fullC = JSON.parse(cString);
+        if (fullC) {
+          console.log(fullC);
+          this.ls.currentUser.subscribe(
+            (usr: User) => {
+              console.log(usr);
+              let c = new Card(0, fullC.name, fullC.type_line, fullC.oracle_text, fullC.mana_cost, fullC.power, fullC.toughness, usr.decks[0].id);
+              this.searchService.addCard(c);
+            }
+          )
+        }
+      });
+  }
 }

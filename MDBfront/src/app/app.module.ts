@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DeckViewComponent } from './deck-view/deck-view.component';
 import { MatTableModule } from '@angular/material/table';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DeckDetailComponent } from './deck-detail/deck-detail.component';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     DeckViewComponent,
     CardSearchComponent,
     UserProfileComponent
+    DeckDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatTableModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { CardDetailComponent } from './card-detail/card-detail.component';
 import { DeckViewComponent } from './deck-view/deck-view.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DeckDetailComponent } from './deck-detail/deck-detail.component';
 // import { MdbModule } from './mdb/mdb.module';
 
 
@@ -72,6 +73,12 @@ const routes: Routes = [
     path:'user/profile',
     component: UserProfileComponent
   }
+  //Deck Details route
+  {
+    path:'decks/:id',
+    component: DeckDetailComponent
+  },
+
 
 ];
 

@@ -39,15 +39,15 @@ export class CardSearchService {
       );
   }
 
-  addCard(c:Card): Observable<User []> {
-    console.log(c);
-    return this.http.post<User []>('http://54.211.173.35:8085/MDB/card', c)
+  addCard(c:Card): Observable<Card> {
+    console.log(JSON.stringify(c));
+    return this.http.post<Card>('http://54.211.173.35:8085/MDB/card', c)
       .pipe(
         catchError(this.handleError<any>('addCard'))
       );
   }
 
-  deleteCard(c: Card): Observable<Card> {
-    return this.http.delete<Card>('http://54.211.173.35:8085/MDB/card'); 
+  deleteCard(c: Card) {
+    this.http.put('http://54.211.173.35:8085/MDB/card', c); 
   }
 }
