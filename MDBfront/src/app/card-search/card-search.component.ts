@@ -82,7 +82,8 @@ export class CardSearchComponent implements OnInit {
     this.searchService.addCard(this.newcard).pipe(map((value: any) => {
       this.newcard = value;
       this.currentDeck.cards.push(this.newcard);
-      this.deckService.updateDeck(this.currentDeck);
+      this.deckService.addDeck(this.currentDeck);
+      console.log(this.currentDeck);
     })).subscribe();
 
   }
